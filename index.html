@@ -1,1 +1,39 @@
-Hello World
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet"
+	  href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <h1> Customer Error in Rust </h1>
+    <pre>
+      <code class="rust">
+macro_rules! error_impl {
+    ($err_struct:ident, $msg: expr) => (
+        impl std::fmt::Display for $err_struct {
+            fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+                write!(f, "{}", $msg)
+            }
+        }
+
+        impl std::error::Error for $err_struct {
+            fn source(&self) -> Option<&(dyn std::error::Error + 'static)> {
+                None
+            }
+        }
+    );
+}
+
+#[derive(Debug, Copy, Clone)]
+pub struct NotAsciiError;
+error_impl!(NotAsciiError, "Not Valid Ascii");
+
+
+      </code>
+    </pre>
+
+  </body>
+
+  <script>hljs.initHighlightingOnLoad();</script>
+</html>
