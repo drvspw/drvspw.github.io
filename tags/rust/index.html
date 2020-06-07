@@ -7,7 +7,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="Venkatakumar Srinivasan" /><link rel="alternate" type="application/rss+xml+xml" href="https://drvspw.github.io/index.xml" title="Notes" /><meta name="generator" content="Hugo 0.72.0" />
+  <meta name="author" content="Venkatakumar Srinivasan" /><link rel="alternate" type="application/rss+xml+xml" href="https://drvspw.github.io/tags/rust/index.xml" title="Notes" /><meta name="generator" content="Hugo 0.72.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
   <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
@@ -40,7 +40,7 @@
     <ul>
         
         <li>
-            <a class="active" href="https://drvspw.github.io/">
+            <a class="" href="https://drvspw.github.io/">
                 <i class="fa-li fa  fa-lg"></i><span>Home</span>
             </a>
         </li>
@@ -71,89 +71,35 @@
 
 
 
-<section id="home">
-        <ul>
-          
-          <li class="first">
-            <h1><a href="https://drvspw.github.io/posts/erlang-os-cmd/" title="Erlang OS Cmd">Erlang OS Cmd</a></h1> 
-            <aside>
+<section id="list">
+
+    
+
+    
+        <h2>#rust</h2>
+    
+
+    
+
+    
+
+    <h3>2020</h3>
     <ul>
-        <li>
-            <time class="post-date" datetime="2020-06-06T23:06:36-05:00">Jun 6, 2020</time>
-        </li>
         
         <li>
-            Categories:
-            <em>
-                
-                    
-                    <a href="https://drvspw.github.io/categories/snippets">snippets</a>
-                
-            </em>
+            <a href="https://drvspw.github.io/posts/custom-rust-error/">Custom Rust Error</a>
+            <time class="date-meta">Jun 6</time>
         </li>
         
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="https://drvspw.github.io/tags/erlang">#erlang</a>
-                
-            </em>
-        </li>
-        
-
-        <li>One minute read</li>
     </ul>
-</aside>
+    
+    
 
-            <p>os_cmd(Command) -&gt; Port = open_port({spawn, Command}, [stream, in, eof, hide, exit_status]), capture_cmd_output(Port, []). capture_cmd_output(Port, Sofar) -&gt; receive {Port, {data, Bytes}} -&gt; capture_cmd_output(Port, [Sofar|Bytes]); {Port, eof} -&gt; Port ! {self(), close}, receive {Port, closed} -&gt; true end, receive {&#39;EXIT&#39;, Port, _} -&gt; ok after 1 -&gt; % force context switch  ok end, ExitCode = receive {Port, {exit_status, Code}} -&gt; Code end, {ExitCode, lists:flatten(Sofar)} end.</p>
-            
-            <a href="https://drvspw.github.io/posts/erlang-os-cmd/">Read more…</a>
-            
-          </li>
-          
-          <li >
-            <h1><a href="https://drvspw.github.io/posts/custom-rust-error/" title="Custom Rust Error">Custom Rust Error</a></h1> 
-            <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2020-06-06T21:42:30-05:00">Jun 6, 2020</time>
-        </li>
-        
-        <li>
-            Categories:
-            <em>
-                
-                    
-                    <a href="https://drvspw.github.io/categories/snippets">snippets</a>
-                
-            </em>
-        </li>
-        
+</section>
 
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="https://drvspw.github.io/tags/rust">#rust</a>
-                
-            </em>
-        </li>
-        
 
-        <li>One minute read</li>
-    </ul>
-</aside>
 
-            <p>macro_rules!error_impl{($err_struct:ident,$msg: expr)=&gt;(implstd::fmt::Displayfor$err_struct{fn fmt(&amp;self,f: &amp;mutstd::fmt::Formatter)-&gt; std::fmt::Result{write!(f,&#34;{}&#34;,$msg)}}implstd::error::Errorfor$err_struct{fn source(&amp;self)-&gt; Option&lt;&amp;(dynstd::error::Error+&#39;static)&gt;{None}});}#[derive(Debug, Copy, Clone)]pubstruct NotAsciiError;error_impl!(NotAsciiError,&#34;Not Valid Ascii&#34;);</p>
-            
-          </li>
-          
-        </ul>
-      </section>
+
 
 
 
