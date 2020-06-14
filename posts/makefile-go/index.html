@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Makefile Go // Notes</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.72.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Venkatakumar Srinivasan" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://drvspw.github.io/css/main.min.2f36ed96c1ecdeb7ffaa62ac37c64b97ee834e8ff3cc8910cd1a72f46dc0b266.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Makefile Go"/>
+<meta name="twitter:description" content="BASEDIR = $(shell pwd) APPNAME = $(shell basename $(BASEDIR)) PACKAGE = github.com/&lt;username&gt;/$(APPNAME) SOURCE_FILES?=./... TEST_PATTERN?=. TEST_OPTIONS?=-v export GO111MODULE := on .DEFAULT_GOAL := help .PHONY: clean tools build test fmt fmtcheck lint cover clean tools: ## setup 	GO111MODULE=on go install github.com/golangci/golangci-lint/cmd/golangci-lint build: fmtcheck lint ## build 	GOOS=linux GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-linux-amd64 $(PACKAGE) GOOS=darwin GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-darwin-amd64 $(PACKAGE) GOOS=windows GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-windows-amd64 $(PACKAGE) test: build ## test 	go test $(TEST_OPTIONS) -failfast -race -coverpkg=."/>
+
+    <meta property="og:title" content="Makefile Go" />
+<meta property="og:description" content="BASEDIR = $(shell pwd) APPNAME = $(shell basename $(BASEDIR)) PACKAGE = github.com/&lt;username&gt;/$(APPNAME) SOURCE_FILES?=./... TEST_PATTERN?=. TEST_OPTIONS?=-v export GO111MODULE := on .DEFAULT_GOAL := help .PHONY: clean tools build test fmt fmtcheck lint cover clean tools: ## setup 	GO111MODULE=on go install github.com/golangci/golangci-lint/cmd/golangci-lint build: fmtcheck lint ## build 	GOOS=linux GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-linux-amd64 $(PACKAGE) GOOS=darwin GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-darwin-amd64 $(PACKAGE) GOOS=windows GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-windows-amd64 $(PACKAGE) test: build ## test 	go test $(TEST_OPTIONS) -failfast -race -coverpkg=." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drvspw.github.io/posts/makefile-go/" />
+<meta property="article:published_time" content="2020-06-14T17:29:13-05:00" />
+<meta property="article:modified_time" content="2020-06-14T17:29:13-05:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://drvspw.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Venkatakumar Srinivasan" /></a>
+      <h1>Venkatakumar Srinivasan</h1>
+      <p> </p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/drvspw" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://twitter.com/_Im_Venkat" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://www.linkedin.com/in/venkatakumar/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Makefile Go</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 14, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://drvspw.github.io/tags/go/">go</a><a class="tag" href="https://drvspw.github.io/tags/makefile/">Makefile</a></div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          <a class="tag" href="https://drvspw.github.io/categories/snippets/">snippets</a></div></div>
+    </header>
+    <div class="post-content">
+      <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile">BASEDIR <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell pwd<span style="color:#66d9ef">)</span>
+APPNAME <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>shell basename <span style="color:#66d9ef">$(</span>BASEDIR<span style="color:#66d9ef">))</span>
+
+PACKAGE <span style="color:#f92672">=</span> github.com/&lt;username&gt;/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>
+
+SOURCE_FILES<span style="color:#f92672">?=</span>./...
+TEST_PATTERN<span style="color:#f92672">?=</span>.
+TEST_OPTIONS<span style="color:#f92672">?=</span>-v
+
+<span style="color:#66d9ef">export </span>GO111MODULE <span style="color:#f92672">:=</span> on
+
+.DEFAULT_GOAL <span style="color:#f92672">:=</span> help
+
+<span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> clean tools build test fmt fmtcheck lint cover clean
+
+<span style="color:#a6e22e">tools</span><span style="color:#f92672">:</span> <span style="color:#75715e">## setup
+</span><span style="color:#75715e"></span>	GO111MODULE<span style="color:#f92672">=</span>on go install github.com/golangci/golangci-lint/cmd/golangci-lint
+
+<span style="color:#a6e22e">build</span><span style="color:#f92672">:</span> fmtcheck lint <span style="color:#75715e">## build
+</span><span style="color:#75715e"></span>	GOOS<span style="color:#f92672">=</span>linux GOARCH<span style="color:#f92672">=</span>amd64 go build -v -o <span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span>/bin/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>-linux-amd64 <span style="color:#66d9ef">$(</span>PACKAGE<span style="color:#66d9ef">)</span>
+	GOOS<span style="color:#f92672">=</span>darwin GOARCH<span style="color:#f92672">=</span>amd64 go build -v -o <span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span>/bin/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>-darwin-amd64 <span style="color:#66d9ef">$(</span>PACKAGE<span style="color:#66d9ef">)</span>
+	GOOS<span style="color:#f92672">=</span>windows GOARCH<span style="color:#f92672">=</span>amd64 go build -v -o <span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span>/bin/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>-windows-amd64 <span style="color:#66d9ef">$(</span>PACKAGE<span style="color:#66d9ef">)</span>
+
+<span style="color:#a6e22e">test</span><span style="color:#f92672">:</span> build <span style="color:#75715e">## test
+</span><span style="color:#75715e"></span>	go test <span style="color:#66d9ef">$(</span>TEST_OPTIONS<span style="color:#66d9ef">)</span> -failfast -race -coverpkg<span style="color:#f92672">=</span>./... -covermode<span style="color:#f92672">=</span>atomic -coverprofile<span style="color:#f92672">=</span>coverage.txt <span style="color:#66d9ef">$(</span>SOURCE_FILES<span style="color:#66d9ef">)</span> -run <span style="color:#66d9ef">$(</span>TEST_PATTERN<span style="color:#66d9ef">)</span> -timeout<span style="color:#f92672">=</span>2m
+
+<span style="color:#a6e22e">fmt</span><span style="color:#f92672">:</span> <span style="color:#75715e">## format
+</span><span style="color:#75715e"></span>	@echo <span style="color:#e6db74">&#34;==&gt; Fixing source code with gofmt...&#34;</span>
+	gofmt -s -w ./<span style="color:#66d9ef">$(</span>PKG_NAME<span style="color:#66d9ef">)</span>
+
+<span style="color:#a6e22e">fmtcheck</span><span style="color:#f92672">:</span> <span style="color:#75715e">## check format
+</span><span style="color:#75715e"></span>	@sh -c <span style="color:#e6db74">&#34;&#39;</span><span style="color:#66d9ef">$(</span>CURDIR<span style="color:#66d9ef">)</span><span style="color:#e6db74">/gofmtcheck.sh&#39;&#34;</span>
+
+<span style="color:#a6e22e">lint</span><span style="color:#f92672">:</span> <span style="color:#75715e">## lint
+</span><span style="color:#75715e"></span>	@echo <span style="color:#e6db74">&#34;==&gt; Checking source code against linters...&#34;</span>
+	@GOGC<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> golangci-lint run ./...
+
+<span style="color:#a6e22e">cover</span><span style="color:#f92672">:</span> test <span style="color:#75715e">## generate coverage report
+</span><span style="color:#75715e"></span>	go tool cover -html<span style="color:#f92672">=</span>coverage.txt
+
+<span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span> <span style="color:#75715e">## clean
+</span><span style="color:#75715e"></span>	rm <span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span>/bin/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>*
+
+<span style="color:#a6e22e">help</span><span style="color:#f92672">:</span> <span style="color:#75715e">## help
+</span><span style="color:#75715e"></span>	@grep -E <span style="color:#e6db74">&#39;^[a-zA-Z_-]+:.*?## .*$$&#39;</span> <span style="color:#66d9ef">$(</span>MAKEFILE_LIST<span style="color:#66d9ef">)</span> | awk <span style="color:#e6db74">&#39;BEGIN {FS = &#34;:.*?## &#34;}; {printf &#34;\033[36m%-30s\033[0m %s\n&#34;, $$1, $$2}&#39;</span>
+</code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+
+    <footer>
+      <h6>Copyright © 2020 - Venkatakumar Srinivasan |
+        Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+        <a href="https://drvspw.github.io/index.xml">Subscribe</a></h6>
+    </footer>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+  </body>
+</html>

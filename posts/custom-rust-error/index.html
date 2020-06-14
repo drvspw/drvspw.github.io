@@ -1,168 +1,118 @@
 <!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Custom Rust Error // Notes</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.72.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Venkatakumar Srinivasan" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://drvspw.github.io/css/main.min.2f36ed96c1ecdeb7ffaa62ac37c64b97ee834e8ff3cc8910cd1a72f46dc0b266.css" />
 
-<html lang="en">
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Custom Rust Error"/>
+<meta name="twitter:description" content="macro_rules! error_impl { ($err_struct:ident, $msg: expr) =&gt; ( impl std::fmt::Display for $err_struct { fn fmt(&amp;self, f: &amp;mut std::fmt::Formatter) -&gt; std::fmt::Result { write!(f, &#34;{}&#34;, $msg) } } impl std::error::Error for $err_struct { fn source(&amp;self) -&gt; Option&lt;&amp;(dyn std::error::Error &#43; &#39;static)&gt; { None } } ); } #[derive(Debug, Copy, Clone)] pub struct NotAsciiError; error_impl!(NotAsciiError, &#34;Not Valid Ascii&#34;); "/>
 
-<head>
-  <title>Notes</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="The HTML5 Herald" />
-  <meta name="author" content="Venkatakumar Srinivasan" /><meta name="generator" content="Hugo 0.72.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
-  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
-  <link rel="stylesheet" type="text/css" href="https://drvspw.github.io/css/styles.css" />
-  <link rel="stylesheet" type="text/css" href="https://drvspw.github.io/css/syntax.css" /></head>
+    <meta property="og:title" content="Custom Rust Error" />
+<meta property="og:description" content="macro_rules! error_impl { ($err_struct:ident, $msg: expr) =&gt; ( impl std::fmt::Display for $err_struct { fn fmt(&amp;self, f: &amp;mut std::fmt::Formatter) -&gt; std::fmt::Result { write!(f, &#34;{}&#34;, $msg) } } impl std::error::Error for $err_struct { fn source(&amp;self) -&gt; Option&lt;&amp;(dyn std::error::Error &#43; &#39;static)&gt; { None } } ); } #[derive(Debug, Copy, Clone)] pub struct NotAsciiError; error_impl!(NotAsciiError, &#34;Not Valid Ascii&#34;); " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://drvspw.github.io/posts/custom-rust-error/" />
+<meta property="article:published_time" content="2020-06-06T21:42:30-05:00" />
+<meta property="article:modified_time" content="2020-06-06T21:42:30-05:00" />
 
-<body>
-  <div id="container">
-    <header>
-      <h1>
-                <a href="https://drvspw.github.io/">Notes</a>
-            </h1>
 
-      <ul id="social-media">
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://drvspw.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="Venkatakumar Srinivasan" /></a>
+      <h1>Venkatakumar Srinivasan</h1>
+      <p> </p>
+      <div class="app-header-social">
         
+          <a target="_blank" href="https://github.com/drvspw" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
         
+          <a target="_blank" href="https://twitter.com/_Im_Venkat" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg></a>
         
-        <li><a href="https://twitter.com/_Im_Venkat"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://www.linkedin.com/in/venkatakumar"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-         
-        <li><a href="https://github.com/drvspw"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a></li>
-           
-      </ul>
-      
+          <a target="_blank" href="https://www.linkedin.com/in/venkatakumar/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        
+      </div>
     </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Custom Rust Error</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jun 6, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://drvspw.github.io/tags/rust/">rust</a></div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          <a class="tag" href="https://drvspw.github.io/categories/snippets/">snippets</a></div></div>
+    </header>
+    <div class="post-content">
+      <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">macro_rules<span style="color:#f92672">!</span> error_impl {
+    (<span style="color:#75715e">$err_struct</span>:<span style="color:#a6e22e">ident</span>, <span style="color:#75715e">$msg</span>: <span style="color:#a6e22e">expr</span>) <span style="color:#f92672">=&gt;</span> (
+        <span style="color:#66d9ef">impl</span> std::fmt::Display <span style="color:#66d9ef">for</span> <span style="color:#75715e">$err_struct</span> {
+            <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">fmt</span>(<span style="color:#f92672">&amp;</span>self, f: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> std::fmt::Formatter) -&gt; <span style="color:#a6e22e">std</span>::fmt::Result {
+                write<span style="color:#f92672">!</span>(f, <span style="color:#e6db74">&#34;{}&#34;</span>, <span style="color:#75715e">$msg</span>)
+            }
+        }
 
-    
-<nav>
-    <ul>
-        
-        <li>
-            <a class="" href="https://drvspw.github.io/">
-                <i class="fa-li fa  fa-lg"></i><span>Home</span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="" href="https://drvspw.github.io/posts/">
-                <i class="fa-li fa  fa-lg"></i><span>Posts</span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="" href="https://drvspw.github.io/categories/">
-                <i class="fa-li fa  fa-lg"></i><span>Categories</span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="" href="https://drvspw.github.io/tags/">
-                <i class="fa-li fa  fa-lg"></i><span>Tags</span>
-            </a>
-        </li>
-        
-    </ul>
-</nav>
+        <span style="color:#66d9ef">impl</span> std::error::Error <span style="color:#66d9ef">for</span> <span style="color:#75715e">$err_struct</span> {
+            <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">source</span>(<span style="color:#f92672">&amp;</span>self) -&gt; Option<span style="color:#f92672">&lt;&amp;</span>(dyn std::error::Error <span style="color:#f92672">+</span> &#39;static)<span style="color:#f92672">&gt;</span> {
+                None
+            }
+        }
+    );
+}
 
-    <main>
+<span style="color:#75715e">#[derive(Debug, Copy, Clone)]</span>
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">NotAsciiError</span>;
+error_impl<span style="color:#f92672">!</span>(NotAsciiError, <span style="color:#e6db74">&#34;Not Valid Ascii&#34;</span>);
+</code></pre></div>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
 
+    </main>
 
-
-
-<article>
-
-    <h1>Custom Rust Error</h1>
-
-    
-        <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2020-06-06T21:42:30-05:00">Jun 6, 2020</time>
-        </li>
-        
-        <li>
-            Categories:
-            <em>
-                
-                    
-                    <a href="https://drvspw.github.io/categories/snippets">snippets</a>
-                
-            </em>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="https://drvspw.github.io/tags/rust">#rust</a>
-                
-            </em>
-        </li>
-        
-
-        <li>One minute read</li>
-    </ul>
-</aside>
-
-    
-
-    <div class="highlight"><pre class="chroma"><code class="language-rust" data-lang="rust"><span class="n">macro_rules</span><span class="o">!</span><span class="w"> </span><span class="n">error_impl</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">    </span><span class="p">(</span><span class="cp">$err_struct</span>:<span class="nc">ident</span><span class="p">,</span><span class="w"> </span><span class="cp">$msg</span>: <span class="nc">expr</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="w">
-</span><span class="w">        </span><span class="k">impl</span><span class="w"> </span><span class="n">std</span>::<span class="n">fmt</span>::<span class="n">Display</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="cp">$err_struct</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">            </span><span class="k">fn</span> <span class="nf">fmt</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">f</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">std</span>::<span class="n">fmt</span>::<span class="n">Formatter</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">std</span>::<span class="n">fmt</span>::<span class="nb">Result</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">                </span><span class="n">write</span><span class="o">!</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="cp">$msg</span><span class="p">)</span><span class="w">
-</span><span class="w">            </span><span class="p">}</span><span class="w">
-</span><span class="w">        </span><span class="p">}</span><span class="w">
-</span><span class="w">
-</span><span class="w">        </span><span class="k">impl</span><span class="w"> </span><span class="n">std</span>::<span class="n">error</span>::<span class="n">Error</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="cp">$err_struct</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">            </span><span class="k">fn</span> <span class="nf">source</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="p">(</span><span class="n">dyn</span><span class="w"> </span><span class="n">std</span>::<span class="n">error</span>::<span class="n">Error</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">&#39;static</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span><span class="w">                </span><span class="nb">None</span><span class="w">
-</span><span class="w">            </span><span class="p">}</span><span class="w">
-</span><span class="w">        </span><span class="p">}</span><span class="w">
-</span><span class="w">    </span><span class="p">);</span><span class="w">
-</span><span class="w"></span><span class="p">}</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="cp">#[derive(Debug, Copy, Clone)]</span><span class="w">
-</span><span class="w"></span><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">NotAsciiError</span><span class="p">;</span><span class="w">
-</span><span class="w"></span><span class="n">error_impl</span><span class="o">!</span><span class="p">(</span><span class="n">NotAsciiError</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;Not Valid Ascii&#34;</span><span class="p">);</span><span class="w">
-</span></code></pre></div>
-
-</article>
-
-
-<section class="post-nav">
-    <ul>
-        
-        
-        <li>
-            <a href="https://drvspw.github.io/posts/erlang-os-cmd/">Erlang OS Cmd <i class="fa fa-chevron-circle-right"></i> </a>
-        </li>
-        
-    </ul>
-</section>
-    
-
-
-
-
-
-</main>
     <footer>
-        <h6>Copyright © 2020 - Venkatakumar Srinivasan |
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="https://drvspw.github.io/index.xml">Subscribe</a></h6>
+      <h6>Copyright © 2020 - Venkatakumar Srinivasan |
+        Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+        <a href="https://drvspw.github.io/index.xml">Subscribe</a></h6>
     </footer>
-</div>
-<script src="https://drvspw.github.io/js/scripts.js"></script>
-
-</body>
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 
     
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
@@ -171,6 +121,5 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
 
-
-
+  </body>
 </html>

@@ -4,7 +4,42 @@
   
   <url>
     <loc>https://drvspw.github.io/categories/</loc>
-    <lastmod>2020-06-06T23:06:36-05:00</lastmod>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/tags/go/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/tags/makefile/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/posts/makefile-go/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/posts/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/categories/snippets/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://drvspw.github.io/tags/</loc>
+    <lastmod>2020-06-14T17:29:13-05:00</lastmod>
   </url>
   
   <url>
@@ -14,26 +49,6 @@
   
   <url>
     <loc>https://drvspw.github.io/posts/erlang-os-cmd/</loc>
-    <lastmod>2020-06-06T23:06:36-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drvspw.github.io/</loc>
-    <lastmod>2020-06-06T23:06:36-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drvspw.github.io/posts/</loc>
-    <lastmod>2020-06-06T23:06:36-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drvspw.github.io/categories/snippets/</loc>
-    <lastmod>2020-06-06T23:06:36-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://drvspw.github.io/tags/</loc>
     <lastmod>2020-06-06T23:06:36-05:00</lastmod>
   </url>
   

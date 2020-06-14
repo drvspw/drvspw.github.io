@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Makefile on Notes</title>
+    <link>https://drvspw.github.io/tags/makefile/</link>
+    <description>Recent content in Makefile on Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - Venkatakumar Srinivasan</copyright>
+    <lastBuildDate>Sun, 14 Jun 2020 17:29:13 -0500</lastBuildDate>
+    
+	<atom:link href="https://drvspw.github.io/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Makefile Go</title>
+      <link>https://drvspw.github.io/posts/makefile-go/</link>
+      <pubDate>Sun, 14 Jun 2020 17:29:13 -0500</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/makefile-go/</guid>
+      <description>BASEDIR = $(shell pwd) APPNAME = $(shell basename $(BASEDIR)) PACKAGE = github.com/&amp;lt;username&amp;gt;/$(APPNAME) SOURCE_FILES?=./... TEST_PATTERN?=. TEST_OPTIONS?=-v export GO111MODULE := on .DEFAULT_GOAL := help .PHONY: clean tools build test fmt fmtcheck lint cover clean tools: ## setup 	GO111MODULE=on go install github.com/golangci/golangci-lint/cmd/golangci-lint build: fmtcheck lint ## build 	GOOS=linux GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-linux-amd64 $(PACKAGE) GOOS=darwin GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-darwin-amd64 $(PACKAGE) GOOS=windows GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-windows-amd64 $(PACKAGE) test: build ## test 	go test $(TEST_OPTIONS) -failfast -race -coverpkg=.</description>
+    </item>
+    
+  </channel>
+</rss>
