@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Notes</title>
+    <link>https://drvspw.github.io/tags/rust/</link>
+    <description>Recent content in rust on Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - Venkatakumar Srinivasan</copyright>
+    <lastBuildDate>Sat, 06 Jun 2020 21:42:30 -0500</lastBuildDate>
+    
+	<atom:link href="https://drvspw.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Custom Rust Error</title>
+      <link>https://drvspw.github.io/posts/custom-rust-error/</link>
+      <pubDate>Sat, 06 Jun 2020 21:42:30 -0500</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/custom-rust-error/</guid>
+      <description>macro_rules! error_impl { ($err_struct:ident, $msg: expr) =&amp;gt; ( impl std::fmt::Display for $err_struct { fn fmt(&amp;amp;self, f: &amp;amp;mut std::fmt::Formatter) -&amp;gt; std::fmt::Result { write!(f, &amp;#34;{}&amp;#34;, $msg) } } impl std::error::Error for $err_struct { fn source(&amp;amp;self) -&amp;gt; Option&amp;lt;&amp;amp;(dyn std::error::Error + &amp;#39;static)&amp;gt; { None } } ); } #[derive(Debug, Copy, Clone)] pub struct NotAsciiError; error_impl!(NotAsciiError, &amp;#34;Not Valid Ascii&amp;#34;); </description>
+    </item>
+    
+  </channel>
+</rss>

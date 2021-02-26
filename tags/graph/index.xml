@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>graph on Notes</title>
+    <link>https://drvspw.github.io/tags/graph/</link>
+    <description>Recent content in graph on Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - Venkatakumar Srinivasan</copyright>
+    <lastBuildDate>Thu, 25 Feb 2021 19:20:52 -0600</lastBuildDate>
+    
+	<atom:link href="https://drvspw.github.io/tags/graph/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java Graph</title>
+      <link>https://drvspw.github.io/posts/java-graph/</link>
+      <pubDate>Thu, 25 Feb 2021 19:20:52 -0600</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/java-graph/</guid>
+      <description>BFS and DFS traversal of a graph.
+import java.util.ArrayList; import java.util.HashMap; import java.util.HashSet; import java.util.Iterator; import java.util.LinkedList; import java.util.List; import java.util.Map; import java.util.Set; public class Graph&amp;lt;V&amp;gt; { private Map&amp;lt;V, List&amp;lt;V&amp;gt;&amp;gt; graph; // create a graph  public Graph() { graph = new HashMap&amp;lt;&amp;gt;(); } // add an edge between nodes  public void addEdge(V v, V w) { // first check if v and w are in graph  ensureNodeExists(v); ensureNodeExists(w); // get adjacency list of v  List&amp;lt;V&amp;gt; adj = graph.</description>
+    </item>
+    
+  </channel>
+</rss>

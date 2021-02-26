@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Notes</title>
+    <link>https://drvspw.github.io/posts/</link>
+    <description>Recent content in Posts on Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright &amp;copy; 2020 - Venkatakumar Srinivasan</copyright>
+    <lastBuildDate>Thu, 25 Feb 2021 19:21:47 -0600</lastBuildDate>
+    
+	<atom:link href="https://drvspw.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java LRU Cache</title>
+      <link>https://drvspw.github.io/posts/java-lru-cache/</link>
+      <pubDate>Thu, 25 Feb 2021 19:21:47 -0600</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/java-lru-cache/</guid>
+      <description>An LRU Cache implementation with O(1) operation to track the the least recently used item.
+import java.util.HashMap; import java.util.Map; public class Cache&amp;lt;K, V&amp;gt; { private static int MAX = 100; private static class Node&amp;lt;V&amp;gt; { public V value; public Node&amp;lt;V&amp;gt; prev; public Node&amp;lt;V&amp;gt; next; public Node(V v, Node&amp;lt;V&amp;gt; p, Node&amp;lt;V&amp;gt; n) { this.value = v; this.next = n; this.prev = p; } public static &amp;lt;T&amp;gt; Node&amp;lt;T&amp;gt; of(T v, Node&amp;lt;T&amp;gt; p, Node&amp;lt;T&amp;gt; n) { return new Node&amp;lt;T&amp;gt;(v, p, n); } } private int capacity; private Map&amp;lt;K, Node&amp;lt;V&amp;gt;&amp;gt; cache; private Node&amp;lt;V&amp;gt; head, tail; public Cache() { this(MAX); } public Cache(int capacity) { this.</description>
+    </item>
+    
+    <item>
+      <title>Java Graph</title>
+      <link>https://drvspw.github.io/posts/java-graph/</link>
+      <pubDate>Thu, 25 Feb 2021 19:20:52 -0600</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/java-graph/</guid>
+      <description>BFS and DFS traversal of a graph.
+import java.util.ArrayList; import java.util.HashMap; import java.util.HashSet; import java.util.Iterator; import java.util.LinkedList; import java.util.List; import java.util.Map; import java.util.Set; public class Graph&amp;lt;V&amp;gt; { private Map&amp;lt;V, List&amp;lt;V&amp;gt;&amp;gt; graph; // create a graph  public Graph() { graph = new HashMap&amp;lt;&amp;gt;(); } // add an edge between nodes  public void addEdge(V v, V w) { // first check if v and w are in graph  ensureNodeExists(v); ensureNodeExists(w); // get adjacency list of v  List&amp;lt;V&amp;gt; adj = graph.</description>
+    </item>
+    
+    <item>
+      <title>Makefile Go</title>
+      <link>https://drvspw.github.io/posts/makefile-go/</link>
+      <pubDate>Sun, 14 Jun 2020 17:29:13 -0500</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/makefile-go/</guid>
+      <description>BASEDIR = $(shell pwd) APPNAME = $(shell basename $(BASEDIR)) PACKAGE = github.com/&amp;lt;username&amp;gt;/$(APPNAME) SOURCE_FILES?=./... TEST_PATTERN?=. TEST_OPTIONS?=-v export GO111MODULE := on .DEFAULT_GOAL := help .PHONY: clean tools build build test fmt fmtcheck lint cover clean tools: ## setup 	GO111MODULE=on go install github.com/golangci/golangci-lint/cmd/golangci-lint # Uncomment this rule for building executable #build: fmtcheck lint ## build #	GOOS=linux GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-linux-amd64 $(PACKAGE) #	GOOS=darwin GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-darwin-amd64 $(PACKAGE) #	GOOS=windows GOARCH=amd64 go build -v -o $(GOPATH)/bin/$(APPNAME)-windows-amd64 $(PACKAGE)  # Uncomment this rule for building library #build: fmtcheck lint ## build #	go build .</description>
+    </item>
+    
+    <item>
+      <title>Erlang OS Cmd</title>
+      <link>https://drvspw.github.io/posts/erlang-os-cmd/</link>
+      <pubDate>Sat, 06 Jun 2020 23:06:36 -0500</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/erlang-os-cmd/</guid>
+      <description>os_cmd(Command) -&amp;gt; Port = open_port({spawn, Command}, [stream, in, eof, hide, exit_status]), capture_cmd_output(Port, []). capture_cmd_output(Port, Sofar) -&amp;gt; receive {Port, {data, Bytes}} -&amp;gt; capture_cmd_output(Port, [Sofar|Bytes]); {Port, eof} -&amp;gt; Port ! {self(), close}, receive {Port, closed} -&amp;gt; true end, receive {&amp;#39;EXIT&amp;#39;, Port, _} -&amp;gt; ok after 1 -&amp;gt; % force context switch  ok end, ExitCode = receive {Port, {exit_status, Code}} -&amp;gt; Code end, {ExitCode, lists:flatten(Sofar)} end. </description>
+    </item>
+    
+    <item>
+      <title>Custom Rust Error</title>
+      <link>https://drvspw.github.io/posts/custom-rust-error/</link>
+      <pubDate>Sat, 06 Jun 2020 21:42:30 -0500</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/custom-rust-error/</guid>
+      <description>macro_rules! error_impl { ($err_struct:ident, $msg: expr) =&amp;gt; ( impl std::fmt::Display for $err_struct { fn fmt(&amp;amp;self, f: &amp;amp;mut std::fmt::Formatter) -&amp;gt; std::fmt::Result { write!(f, &amp;#34;{}&amp;#34;, $msg) } } impl std::error::Error for $err_struct { fn source(&amp;amp;self) -&amp;gt; Option&amp;lt;&amp;amp;(dyn std::error::Error + &amp;#39;static)&amp;gt; { None } } ); } #[derive(Debug, Copy, Clone)] pub struct NotAsciiError; error_impl!(NotAsciiError, &amp;#34;Not Valid Ascii&amp;#34;); </description>
+    </item>
+    
+  </channel>
+</rss>
