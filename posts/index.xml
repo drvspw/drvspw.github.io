@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright &amp;copy; 2020 - Venkatakumar Srinivasan</copyright>
-    <lastBuildDate>Thu, 25 Feb 2021 19:21:47 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 05 Mar 2021 11:55:27 -0600</lastBuildDate>
     
 	<atom:link href="https://drvspw.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Testing in Go</title>
+      <link>https://drvspw.github.io/posts/testing-go/</link>
+      <pubDate>Fri, 05 Mar 2021 11:55:27 -0600</pubDate>
+      
+      <guid>https://drvspw.github.io/posts/testing-go/</guid>
+      <description>Helper functions for testing
+import ( &amp;#34;fmt&amp;#34; &amp;#34;path/filepath&amp;#34; &amp;#34;runtime&amp;#34; &amp;#34;reflect&amp;#34; &amp;#34;testing&amp;#34; ) // assert fails the test if the condition is false. func assert(tb testing.TB, condition bool, msg string, v ...interface{}) { if !condition { _, file, line, _ := runtime.Caller(1) fmt.Printf(&amp;#34;\033[31m%s:%d: &amp;#34;+msg+&amp;#34;\033[39m\n\n&amp;#34;, append([]interface{}{filepath.Base(file), line}, v...)...) tb.FailNow() } } // ok fails the test if an err is not nil. func ok(tb testing.TB, err error) { if err != nil { _, file, line, _ := runtime.</description>
+    </item>
     
     <item>
       <title>Java LRU Cache</title>
