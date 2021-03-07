@@ -18,7 +18,7 @@
       
       <guid>https://drvspw.github.io/posts/testing-go/</guid>
       <description>Helper functions for testing
-import ( &amp;#34;fmt&amp;#34; &amp;#34;path/filepath&amp;#34; &amp;#34;runtime&amp;#34; &amp;#34;reflect&amp;#34; &amp;#34;testing&amp;#34; ) // assert fails the test if the condition is false. func assert(tb testing.TB, condition bool, msg string, v ...interface{}) { if !condition { _, file, line, _ := runtime.Caller(1) fmt.Printf(&amp;#34;\033[31m%s:%d: &amp;#34;+msg+&amp;#34;\033[39m\n\n&amp;#34;, append([]interface{}{filepath.Base(file), line}, v...)...) tb.FailNow() } } // ok fails the test if an err is not nil. func ok(tb testing.TB, err error) { if err != nil { _, file, line, _ := runtime.</description>
+package test import ( &amp;#34;fmt&amp;#34; &amp;#34;path/filepath&amp;#34; &amp;#34;runtime&amp;#34; &amp;#34;reflect&amp;#34; &amp;#34;testing&amp;#34; ) // Assert fails the test if the condition is false. func Assert(tb testing.TB, condition bool, msg string, v ...interface{}) { if !condition { _, file, line, _ := runtime.Caller(1) fmt.Printf(&amp;#34;\033[31m%s:%d: &amp;#34;+msg+&amp;#34;\033[39m\n\n&amp;#34;, append([]interface{}{filepath.Base(file), line}, v...)...) tb.FailNow() } } // Ok fails the test if an err is not nil. func Ok(tb testing.TB, err error) { if err !</description>
     </item>
     
     <item>

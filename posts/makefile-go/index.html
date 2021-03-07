@@ -136,7 +136,7 @@ LINTERS <span style="color:#f92672">=</span> fmtcheck lint tidy
 <span style="color:#a6e22e">lint</span><span style="color:#f92672">:</span> <span style="color:#75715e">## lint
 </span><span style="color:#75715e"></span>	@echo <span style="color:#e6db74">&#34;==&gt; Checking source code against linters...&#34;</span>
 	@GOGC<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> golangci-lint run ./...
-	
+
 <span style="color:#a6e22e">tidy</span><span style="color:#f92672">:</span> <span style="color:#75715e">## tidy
 </span><span style="color:#75715e"></span>	go mod tidy
 
@@ -148,7 +148,7 @@ LINTERS <span style="color:#f92672">=</span> fmtcheck lint tidy
 
 <span style="color:#a6e22e">help</span><span style="color:#f92672">:</span> <span style="color:#75715e">## help
 </span><span style="color:#75715e"></span>	@grep -E <span style="color:#e6db74">&#39;^[a-zA-Z_-]+:.*?## .*$$&#39;</span> <span style="color:#66d9ef">$(</span>MAKEFILE_LIST<span style="color:#66d9ef">)</span> | awk <span style="color:#e6db74">&#39;BEGIN {FS = &#34;:.*?## &#34;}; {printf &#34;\033[36m%-30s\033[0m %s\n&#34;, $$1, $$2}&#39;</span>
-	
+
 </code></pre></div><p>The <code>Makefile</code> has a dependency on <code>gofmtcheck.sh</code> script listed below</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
 <span style="color:#75715e">#!/usr/bin/env bash</span>
