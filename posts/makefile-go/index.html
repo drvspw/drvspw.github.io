@@ -145,6 +145,11 @@ LINTERS <span style="color:#f92672">=</span> fmtcheck lint tidy
 
 <span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span> <span style="color:#75715e">## clean
 </span><span style="color:#75715e"></span>	rm <span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span>/bin/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>*
+	
+<span style="color:#a6e22e">run</span><span style="color:#f92672">:</span> build <span style="color:#75715e">## run
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">$(</span>GOPATH<span style="color:#66d9ef">)</span>/bin/<span style="color:#66d9ef">$(</span>APPNAME<span style="color:#66d9ef">)</span>-linux-amd64 <span style="color:#66d9ef">$(</span>filter-out $@,<span style="color:#66d9ef">$(</span>MAKECMDGOALS<span style="color:#66d9ef">))</span>
+<span style="color:#a6e22e">%</span><span style="color:#f92672">:</span>
+	@:
 
 <span style="color:#a6e22e">help</span><span style="color:#f92672">:</span> <span style="color:#75715e">## help
 </span><span style="color:#75715e"></span>	@grep -E <span style="color:#e6db74">&#39;^[a-zA-Z_-]+:.*?## .*$$&#39;</span> <span style="color:#66d9ef">$(</span>MAKEFILE_LIST<span style="color:#66d9ef">)</span> | awk <span style="color:#e6db74">&#39;BEGIN {FS = &#34;:.*?## &#34;}; {printf &#34;\033[36m%-30s\033[0m %s\n&#34;, $$1, $$2}&#39;</span>
